@@ -1,21 +1,53 @@
 ﻿using System;
-namespace Quan
-{
-    class Baichuyennhietdo
-    {
-        public static void Main()               
-        {
-            int C;
-            double f;
-            string strC;
 
-            Console.WriteLine("Chao Mung Ban Den Voi Chuong Trinh Chuyen Doi Nhiet Do");
-            Console.WriteLine("Moi ban nhap nhiet do can chuyen doi");
-            strC =  Console.ReadLine();
-            C = int.Parse(strC);
-            f = (double)(((9 * C) / 5) + 32);
-            Console.WriteLine("Ket qua sau khi chuyen doi la: " + f);
-            Console.Read();
+namespace dotnet_change_temperature
+{
+    class Program
+    {
+        public static void Main(String[] args)
+        {
+            double fahrenheit;
+            double celsius;
+            int choice;
+
+            do
+            {
+                Console.WriteLine("Menu.");
+                Console.WriteLine("1. Fahrenheit to Celsius");
+                Console.WriteLine("2. Celsius to Fahrenheit");
+                Console.WriteLine("0. Exit");
+                Console.WriteLine("Enter your choice: ");
+                choice = Int32.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter fahrenheit: ");
+                        fahrenheit = Double.Parse(Console.ReadLine());
+                        Console.WriteLine("Fahrenheit to Celsius: " + FahrenheitToCelsius(fahrenheit));
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter Celsius: ");
+                        celsius = Double.Parse(Console.ReadLine());
+                        Console.WriteLine("Celsius to Fahrenheit: " + CelsiusToFahrenheit(celsius));
+                        break;
+                    case 0:
+                        Environment.Exit(0);
+                        break;
+                }
+            } while (choice != 0);
+        }
+
+        public static double CelsiusToFahrenheit(double celsius)
+        {
+            double fahrenheit = (9.0 / 5) * celsius + 32;
+            return fahrenheit;
+        }
+
+        public static double FahrenheitToCelsius(double fahrenheit)
+        {
+            double celsius = (5.0 / 9) * (fahrenheit - 32);
+            return celsius;
         }
     }
 }
